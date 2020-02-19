@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import strange.models.Voter;
 import strange.repository.VoterRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,12 +16,9 @@ public class VoterService {
     private VoterRepository repository;
 
     public List<Voter> getAllVoters(){
-        List<Voter> voters = null;
-        for (Voter voter: repository.findAll()) {
-            assert false;
-            voters.add(voter);
-        }
-        return voters;
+        List<Voter> results = new ArrayList<Voter>();
+        repository.findAll().forEach(results::add);
+        return results;
     }
 
     public Voter getVoters(Long votersId) {
